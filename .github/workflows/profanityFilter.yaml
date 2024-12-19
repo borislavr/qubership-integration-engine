@@ -1,4 +1,3 @@
-# The name of the workflow
 name: Profanity filter
 
 # Trigger on issue or pull requests, that are opened, edited, or reopened
@@ -16,14 +15,9 @@ permissions:
   pull-requests: write
 
 jobs:
-  # Name the job whatever you'd like
   apply-filter:
-
     runs-on: ubuntu-latest
-
     steps:
-
-    # Name the step anything that makes sense to you
     - name: Scan issue or pull request for profanity
       # Conditionally run the step if the actor isn't a bot
       if: ${{ github.actor != 'dependabot[bot]' && github.actor != 'github-actions[bot]' }}
