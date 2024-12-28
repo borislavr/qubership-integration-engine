@@ -58,13 +58,13 @@
 
 
     
-  <distributionManagement>
+  <!--distributionManagement>
     <repository>
       <id>ossrh</id>
       <name>Central Maven Repository</name>
       <url>https://central.sonatype.com/api/v1/publisher/</url>
     </repository>
-  </distributionManagement>
+  </distributionManagement-->
 
     <dependencyManagement>
         <dependencies>
@@ -783,6 +783,16 @@
                     </execution>
                 </executions>
             </plugin>
+        <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>0.6.0</version>
+          <extensions>true</extensions>
+          <configuration>
+             <publishingServerId>central</publishingServerId>
+             <autoPublish>true</autoPublish>
+          </configuration>
+        </plugin>
         </plugins>
     </build>
 
