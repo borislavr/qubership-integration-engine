@@ -16,7 +16,7 @@ jobs:
 
   build-app:
     needs: setup-tag
-    uses: borislavr/workflow-hub/.github/workflows/build-app.yml@main
+    uses: borislavr/workflow-hub/.github/workflows/build-and-publish.yml@main
     with:
       artifact_name: qip-engine-jar
       artifact_path: target/qip-engine-*-exec.jar 
