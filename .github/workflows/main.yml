@@ -24,3 +24,5 @@ jobs:
     secrets:
       maven_username: ${{ secrets.OSSRH_USERNAME }}
       maven_password: ${{ secrets.OSSRH_TOKEN }}
+      maven_gpg_passphrase: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      maven_gpg_private_key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
