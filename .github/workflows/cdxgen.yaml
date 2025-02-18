@@ -1,0 +1,17 @@
+---
+
+name: 'CDXGen-MVN'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  cdxgen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "cdxgen"
+        uses: netcracker/qubership-workflow-hub/actions/cdxgen@feature/cdxgen
+        with:
+          project_type: "maven"
