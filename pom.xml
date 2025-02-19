@@ -56,16 +56,6 @@
         <values-schema-json-plugin.version>1.1.1</values-schema-json-plugin.version>
     </properties>
 
-
-    
-  <distributionManagement>
-    <repository>
-      <id>central</id>
-      <name>Central Maven Repository</name>
-      <!--url>https://central.sonatype.com/api/v1/publisher/</url-->
-    </repository>
-  </distributionManagement>
-
     <dependencyManagement>
         <dependencies>
 
@@ -783,17 +773,6 @@
                     </execution>
                 </executions>
             </plugin>
-        <plugin>
-          <groupId>org.sonatype.central</groupId>
-          <artifactId>central-publishing-maven-plugin</artifactId>
-          <version>0.6.0</version>
-          <extensions>true</extensions>
-          <configuration>
-             <publishingServerId>central</publishingServerId>
-             <autoPublish>true</autoPublish>
-             <waitUntil>published</waitUntil>      
-          </configuration>
-        </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
