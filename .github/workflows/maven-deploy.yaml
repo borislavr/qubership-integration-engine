@@ -10,10 +10,26 @@ on:
 
 jobs:
   mvn:
-      uses: netcracker/qubership-workflow-hub/.github/workflows/maven-publish.yml@main
-      with:
-        maven_command: "--batch-mode deploy -Dgpg.skip=true"
-        java_version: 21
-        server_id: github
-      secrets:
-        maven_password: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+      - name: "Configure maven GitHub repository server"
+        uses: s4u/maven-settings-action@v3.1.0
+        with:
+          repositories: '[{"id":"github","name":"github","url":"https://maven.pkg.github.com/$${{ github.repository }}","snapshots":{"enabled":true}}]'
+      - name: "Maven deploy"
+        run: |
+          mvn --batch-mode deploy -Dgpg.skip=true
+#          :deploy-file \
+#          -Durl=http://repo.veggiecorp.com/artifactory/ext-release-local \
+#          -Dfile=crypto.jar \
+#          -DpomFile=pom.xml \
+#          -DrepositoryId=github
+#    uses: netcracker/qubership-workflow-hub/.github/workflows/maven-publish.yml@main
+#    with:
+#      maven_command: "--batch-mode deploy -Dgpg.skip=true"
+#      java_version: 21
+#      server_id: github
+#    secrets:
+#      maven_password: ${{ secrets.GITHUB_TOKEN }}
