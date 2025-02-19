@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      maven_command:
+        required: false
+        type: string
+        default: "--batch-mode deploy"
+
+jobs:
+  mvn:
+      uses: netcracker/qubership-workflow-hub/.github/workflows/maven-publish.yml@main
+      with:
+        maven_command: "--batch-mode deploy -Dgpg.skip=true"
+        java_version: 21
+        server_id: github
+      secrets:
+        maven_password: ${{ secrets.GITHUB_TOKEN }}
