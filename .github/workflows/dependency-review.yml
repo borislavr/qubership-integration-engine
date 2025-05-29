@@ -13,5 +13,8 @@ jobs:
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v4
         with:
-          base-ref: main
+          base-ref: bdeb5c67b738c9f2cb677af7c13af42bd172c1ac
           head-ref: ${{ github.ref }}
+          show-openssf-scorecard: true
+          vulnerability-check: true
+          license-check: true
