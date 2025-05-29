@@ -10,10 +10,15 @@ jobs:
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: "Get the first commit SHA"
+        id: first-commit
+        run: echo "first_commit_sha=$(git rev-list --max-parents=0 HEAD)" >> $GITHUB_ENV
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v4
         with:
-          base-ref: bdeb5c67b738c9f2cb677af7c13af42bd172c1ac
+          base-ref: ${{ steps.first-commit.outputs.first_commit_sha }}
           head-ref: ${{ github.ref }}
           show-openssf-scorecard: true
           vulnerability-check: true
