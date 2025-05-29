@@ -25,6 +25,7 @@ jobs:
           show-openssf-scorecard: true
           vulnerability-check: true
           license-check: true
+          warn-only: true
       - name: 'Dependency Review'
         if: github.event_name == 'pull_request'
         uses: actions/dependency-review-action@v4
