@@ -18,7 +18,7 @@ jobs:
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v4
         with:
-          base-ref: ${{ steps.first-commit.outputs.first_commit_sha }}
+          base-ref: ${{ env.first_commit_sha }}
           head-ref: ${{ github.ref }}
           show-openssf-scorecard: true
           vulnerability-check: true
