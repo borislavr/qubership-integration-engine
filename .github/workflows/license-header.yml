@@ -22,17 +22,19 @@ jobs:
         run: |
           branch_name=add-license-headers-$(date +%s)
           git checkout -b ${branch_name}
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-
+          git config --global user.name "qubership-actions[bot]"
+          git config --global user.email "qubership-actions[bot]@users.noreply.github.com"
+          git checkout -b ${branch_name}
+          git config pull.rebase false
+          git pull origin main
+          git push --set-upstream origin ${branch_name}
       - name: Add license headers
         run: addlicense -c "Qubership" -l apache ./src
       - name: Commit changes
         run: |
           git add .
           git commit -m "chore: add license headers to source files" || true
-          # git push origin ${branch_name}
-          git push --set-upstream origin ${branch_name}
+          git push origin ${branch_name}
           echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.8
