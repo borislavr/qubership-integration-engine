@@ -7,7 +7,7 @@ jobs:
   license:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Install addlicense
         run: go install github.com/google/addlicense@latest
       - name: Add license headers
@@ -21,7 +21,7 @@ jobs:
           git commit -m "Add license headers to source files" || true
           git push origin add-license-headers-$(date +%s)
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7.0.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Add license headers to source files"
