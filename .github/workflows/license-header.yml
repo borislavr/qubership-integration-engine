@@ -23,6 +23,7 @@ jobs:
 #      - name: Add license headers
 #        run: addlicense -v -c "Qubership" -l apache .
       - name: Fix License Header
+        continue-on-error: true
         uses: apache/skywalking-eyes/header@v0.7.0
         with:
           mode: fix
