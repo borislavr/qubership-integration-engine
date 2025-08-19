@@ -22,7 +22,7 @@ jobs:
           go install github.com/google/addlicense@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Add license headers
-        run: addlicense -v -c "Qubership" -l apache .
+        run: addlicense -v -c "Qubership" -l apache ./src/**/*
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.8
         with:
