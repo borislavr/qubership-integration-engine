@@ -22,12 +22,14 @@ jobs:
         run: addlicense -c "Qubership" -l apache ./src
       - name: Create new branch
         run: |
-          git checkout -b add-license-headers-$(date +%s)
+          branch_name=add-license-headers-$(date +%s)
+          git checkout -b ${branch_name}
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
           git commit -m "Add license headers to source files" || true
-          git push origin add-license-headers-$(date +%s)
+          git push origin ${branch_name}
+          echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.8
         with:
@@ -35,5 +37,5 @@ jobs:
           commit-message: "Add license headers to source files"
           title: "Add license headers to source files"
           body: "This PR adds Apache license headers to all applicable source files."
-          branch: add-license-headers-$(date +%s)
+          branch: ${{ env.BRANCH_NAME }}
           base: main
