@@ -1,0 +1,31 @@
+name: Add License Headers
+on:
+  push:
+    branches:
+      - main
+jobs:
+  license:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install addlicense
+        run: go install github.com/google/addlicense@latest
+      - name: Add license headers
+        run: addlicense -c "Qubership" -l apache .
+      - name: Create new branch
+        run: |
+          git checkout -b add-license-headers-$(date +%s)
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "Add license headers to source files" || true
+          git push origin add-license-headers-$(date +%s)
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Add license headers to source files"
+          title: "Add license headers to source files"
+          body: "This PR adds Apache license headers to all applicable source files."
+          branch: add-license-headers-$(date +%s)
+          base: main
