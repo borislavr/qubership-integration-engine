@@ -5,6 +5,8 @@ on:
       - main
 jobs:
   license:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +19,7 @@ jobs:
           go install github.com/google/addlicense@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH # Добавляем путь к бинарникам Go в PATH      - name: Install addlicense
       - name: Add license headers
-        run: addlicense -c "Qubership" -l apache .
+        run: addlicense -c "Qubership" -l apache ./src
       - name: Create new branch
         run: |
           git checkout -b add-license-headers-$(date +%s)
