@@ -8,6 +8,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,7 +22,7 @@ jobs:
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
       - name: Add license headers
-        run: addlicense -v -c "Qubership" -l apache -ignore .github/** .
+        run: addlicense -v -c "Qubership" -l apache .
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.8
