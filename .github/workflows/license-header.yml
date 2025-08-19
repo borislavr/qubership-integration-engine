@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21' # Указываем версию Go
       - name: Install addlicense
-        run: go install github.com/google/addlicense@latest
+        run: |
+          go install github.com/google/addlicense@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH # Добавляем путь к бинарникам Go в PATH      - name: Install addlicense
       - name: Add license headers
         run: addlicense -c "Qubership" -l apache .
       - name: Create new branch
