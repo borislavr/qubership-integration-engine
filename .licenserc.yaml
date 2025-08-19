@@ -11,5 +11,6 @@ header:
     - 'LICENSE'
     - 'NOTICE'
     - '.github'
+    - 'renovate.json'
 
   comment: on-failure
