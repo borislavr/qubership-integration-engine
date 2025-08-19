@@ -24,7 +24,6 @@ jobs:
           git checkout -b ${branch_name}
           git config --global user.name "qubership-actions[bot]"
           git config --global user.email "qubership-actions[bot]@users.noreply.github.com"
-          git checkout -b ${branch_name}
           git config pull.rebase false
           git pull origin main
           git push --set-upstream origin ${branch_name}
