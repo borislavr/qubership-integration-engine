@@ -1,6 +1,6 @@
 
 # FROM eclipse-temurin:21-jre-alpine
-FROM alpine/java:21-jre
+FROM alpine/java:22-jre
 
 RUN chmod -R 755 /opt/java/openjdk && \
     apk add --no-cache curl
