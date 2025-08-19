@@ -31,7 +31,8 @@ jobs:
         run: |
           git add .
           git commit -m "chore: add license headers to source files" || true
-          git push origin ${branch_name}
+          # git push origin ${branch_name}
+          git push --set-upstream origin ${branch_name}
           echo "BRANCH_NAME=${branch_name}" >> $GITHUB_ENV
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.8
