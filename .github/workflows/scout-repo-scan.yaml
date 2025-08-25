@@ -30,8 +30,8 @@ jobs:
         sarif-file: sarif.output.json
         summary: true
         ignore-base: true
-        dockerhub-user: ${{ secrets.DOCKERHUB_USER }}
-        dockerhub-password: ${{ secrets.DOCKERHUB_RW_TOKEN }}
+        dockerhub-user: ${{ secrets.DOCKER_IO_USER }}
+        dockerhub-password: ${{ secrets.DOCKER_IO_PASSWORD }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload SARIF result
