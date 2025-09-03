@@ -17,7 +17,7 @@ jobs:
       - name: "Configure maven GitHub repository server"
         uses: s4u/maven-settings-action@v3.1.0
         with:
-          repositories: '[{"id":"github","name":"github","url":"https://maven.pkg.github.com/$${{ github.repository }}","snapshots":{"enabled":true}}]'
+          repositories: '[{"id":"github","name":"github","url":"https://maven.pkg.github.com/${{ github.repository }}","snapshots":{"enabled":true}}]'
       - name: "Maven deploy"
         run: |
           mvn --batch-mode deploy -Dgpg.skip=true
