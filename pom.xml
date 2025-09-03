@@ -19,7 +19,7 @@
         <generated-resources>target/generated-sources/resources</generated-resources>
         <java.version>21</java.version>
 
-        <groovy-apache-bom.version>4.0.21</groovy-apache-bom.version>
+        <groovy-apache-bom.version>5.0.0</groovy-apache-bom.version>
         <jackson-bom.version>2.18.3</jackson-bom.version>
 
         <!-- 3rd party dependencies -->
