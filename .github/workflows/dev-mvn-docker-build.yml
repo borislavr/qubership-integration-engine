@@ -56,7 +56,6 @@ permissions:
 jobs:
   dev-build:
     runs-on: ubuntu-latest
-    needs: dev-build
     permissions:
       contents: read
       packages: write
